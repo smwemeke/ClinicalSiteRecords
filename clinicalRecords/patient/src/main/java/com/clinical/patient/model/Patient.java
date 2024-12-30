@@ -2,13 +2,22 @@ package com.clinical.patient.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity(name = "patient")
+
+@Entity
+@Table(name = "patients")
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
+@Builder
 public class Patient {
-    private String patientId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "patientId")
+    private Long patientId;
     private String firstName;
     private String lastName;
     private int age;
@@ -17,5 +26,23 @@ public class Patient {
     @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinColumn(name = "addressid")
     private Address address;
+    @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    private Triage triage;
     private String studyName;
+
+    public Patient( String firstName,
+                    String lastName,
+                    int age,
+                    String gender,
+                    String contactInfo,
+                    Address address,
+                    String studyName){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.gender = gender;
+        this.contactInfo = contactInfo;
+        this.address = address;
+        this.studyName = studyName;
+    }
 }
