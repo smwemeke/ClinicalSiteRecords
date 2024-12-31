@@ -1,14 +1,14 @@
 package com.clinical.patient.service;
 
-import com.clinical.patient.dto.request.PatientRequestDTO;
-import com.clinical.patient.dto.response.PatientResponseDTO;
+import com.clinical.patient.dto.PatientDTO;
+import com.clinical.patient.dto.TriageDTO;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface PatientService {
-      Optional<PatientResponseDTO> registerPatient(PatientRequestDTO patientRequestDTO);
-      List<PatientResponseDTO> getAllPatients();
-      void deletePatient();
-      Optional<PatientResponseDTO> updatePatient(String patientId);
+      Optional<PatientDTO> registerPatient(PatientDTO patientRequestDTO);
+      List<PatientDTO> getAllPatients();
+      void deletePatientById(Long patientId);
+      Optional<TriageDTO> registerTriage(TriageDTO triageRequest);
 }

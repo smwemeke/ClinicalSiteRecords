@@ -1,12 +1,14 @@
-package com.clinical.patient.dto.request;
+package com.clinical.patient.dto;
 
-public record PatientRequestDTO(
+public record PatientDTO(
+         Long patientId,
          String firstName,
          String lastName,
          int age,
          String gender,
          String contactInfo,
-         AddressRequestDTO addressRequestDTO,
+         AddressDTO addressDTO,
+         TriageDTO triageDTO,
          String studyName
 ) {
 }

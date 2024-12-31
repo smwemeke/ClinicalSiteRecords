@@ -37,6 +37,7 @@ public class Patient {
                     String contactInfo,
                     Address address,
                     String studyName){
+
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;

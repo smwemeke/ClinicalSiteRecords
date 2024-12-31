@@ -1,14 +1,12 @@
 package com.clinical.patient.controller;
 
-import com.clinical.patient.dto.request.PatientRequestDTO;
-import com.clinical.patient.dto.response.PatientResponseDTO;
+import com.clinical.patient.dto.PatientDTO;
 import com.clinical.patient.service.PatientService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,13 +22,13 @@ public class PatientController {
     private final PatientService patientService;
 
    @PostMapping
-    public ResponseEntity<PatientResponseDTO> registerPatient(
+    public ResponseEntity<PatientDTO> registerPatient(
             @Valid
-            @RequestBody PatientRequestDTO patientRequestDTO
+            @RequestBody PatientDTO patientDTO
             ){
-       log.info("new patient registration {}", patientRequestDTO);
+       log.info("new patient registration {}", patientDTO);
 
-       Optional<PatientResponseDTO> responseDTO = patientService.registerPatient(patientRequestDTO);
+       Optional<PatientDTO> responseDTO = patientService.registerPatient(patientDTO);
 
        if(responseDTO.isPresent()){
            return ResponseEntity.status(HttpStatus.CREATED).body(responseDTO.get());
