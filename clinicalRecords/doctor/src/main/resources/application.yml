@@ -1,0 +1,17 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: doctor
+  datasource:
+    password: password@123
+    url: jdbc:postgresql://localhost:5432/doctor
+    username: alvron
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: true
