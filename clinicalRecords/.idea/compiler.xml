@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
+    <excludeFromCompile>
+      <directory url="file://$PROJECT_DIR$/doctor/src/main/resources/archetype-resources" includeSubdirectories="true" />
+    </excludeFromCompile>
     <annotationProcessing>
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="doctor" />
         <module name="patient" />
       </profile>
     </annotationProcessing>
@@ -13,6 +17,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="clinicalRecords" options="" />
+      <module name="doctor" options="" />
       <module name="patient" options="" />
     </option>
   </component>

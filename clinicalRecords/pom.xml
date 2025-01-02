@@ -10,6 +10,8 @@
 
     <modules>
         <module>patient</module>
+        <module>doctor</module>
+
     </modules>
 
     <properties>
