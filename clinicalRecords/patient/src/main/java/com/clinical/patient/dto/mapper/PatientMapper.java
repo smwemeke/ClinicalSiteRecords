@@ -5,6 +5,7 @@ import com.clinical.patient.dto.PatientDTO;
 import com.clinical.patient.dto.TriageDTO;
 import com.clinical.patient.model.Address;
 import com.clinical.patient.model.Patient;
+import com.clinical.patient.model.Triage;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -24,6 +25,12 @@ public class PatientMapper {
                 .address(Address.builder()
                         .city(patientDTO.addressDTO().city())
                         .street(patientDTO.addressDTO().street())
+                        .build())
+                .triage(Triage.builder()
+                        .pressure(patientDTO.triageDTO().pressure())
+                        .temp(patientDTO.triageDTO().temp())
+                        .pulseRate(patientDTO.triageDTO().pulseRate())
+                        .respirationRate(patientDTO.triageDTO().respirationRate())
                         .build())
                 .studyName(patientDTO.studyName())
                 .build();

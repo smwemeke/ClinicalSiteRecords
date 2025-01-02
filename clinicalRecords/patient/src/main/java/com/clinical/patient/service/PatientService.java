@@ -10,5 +10,5 @@ public interface PatientService {
       Optional<PatientDTO> registerPatient(PatientDTO patientRequestDTO);
       List<PatientDTO> getAllPatients();
       void deletePatientById(Long patientId);
-      Optional<TriageDTO> registerTriage(TriageDTO triageRequest);
+      PatientDTO updatePatientTriage(PatientDTO patientDTO, Long patientId);
 }

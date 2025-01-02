@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "patientId")
+    @Column(name = "patientid")
     private Long patientId;
     private String firstName;
     private String lastName;
@@ -27,6 +27,7 @@ public class Patient {
     @JoinColumn(name = "addressid")
     private Address address;
     @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @JoinColumn(name = "triageid")
     private Triage triage;
     private String studyName;
 
@@ -36,6 +37,7 @@ public class Patient {
                     String gender,
                     String contactInfo,
                     Address address,
+                    Triage triage,
                     String studyName){
 
         this.firstName = firstName;
@@ -44,6 +46,7 @@ public class Patient {
         this.gender = gender;
         this.contactInfo = contactInfo;
         this.address = address;
+        this.triage = triage;
         this.studyName = studyName;
     }
 }

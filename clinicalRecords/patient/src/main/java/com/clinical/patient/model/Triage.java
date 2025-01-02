@@ -19,7 +19,7 @@ public class Triage {
     @Column(name = "triageid")
     private Long triageId;
     private String pressure;
-    private float temp;
+    private Float temp;
     private Integer pulseRate;
     private Integer respirationRate;
 }

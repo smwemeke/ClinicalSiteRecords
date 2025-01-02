@@ -1,17 +1,33 @@
-#services:
-#  mysql:
-#    container_name: mysql
-#    image: 'mysql:latest'
-#    environment:
-#      - 'MYSQL_USERNAME=alvron'
-#      - 'MYSQL_PASSWORD=password@123'
-#    ports:
-#      - '3306:3306'
-#    healthcheck: # Ensures that the mysql service is fully ready before the web service starts
-#      test: [ "CMD", "pg_isready", "-U", "alvron" ]
-#      interval: 10s # The health check runs every 10 seconds.
-#      timeout: 5s # Each health check must complete within 5 seconds.
-#      retries: 3 # Docker will retry the health check 3 times before marking the service as unhealthy.
-#      start_period: 10s # Delay before Docker begins checking service health to allow PostgreSQL to initialize.
-#
-#
+services:
+  postgres:
+    container_name: postgres
+    image: 'postgres:latest'
+    environment:
+      - 'POSTGRES_USERNAME=alvron'
+      - 'POSTGRES_PASSWORD=password@123'
+    ports:
+      - '5432:5432'
+    healthcheck: # Ensures that the mysql service is fully ready before the web service starts
+      test: [ "CMD", "pg_isready", "-U", "alvron" ]
+      interval: 10s # The health check runs every 10 seconds.
+      timeout: 5s # Each health check must complete within 5 seconds.
+      retries: 3 # Docker will retry the health check 3 times before marking the service as unhealthy.
+      start_period: 10s # Delay before Docker begins checking service health to allow PostgreSQL to initialize.
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+    ports:
+      - "5050:80"
+    networks:
+      - postgres
+    restart: unless-stopped
+
+
+
