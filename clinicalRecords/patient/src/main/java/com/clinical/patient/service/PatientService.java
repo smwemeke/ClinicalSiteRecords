@@ -1,7 +1,7 @@
 package com.clinical.patient.service;
 
 import com.clinical.patient.dto.PatientDTO;
-import com.clinical.patient.dto.TriageDTO;
+
 
 import java.util.List;
 import java.util.Optional;
