@@ -9,7 +9,6 @@
     </parent>
 
     <artifactId>doctor</artifactId>
-
     <properties>
         <java.version>21</java.version>
     </properties>
