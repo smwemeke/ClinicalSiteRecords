@@ -28,3 +28,6 @@ services:
     networks:
       - postgres
     restart: unless-stopped
+
+
+

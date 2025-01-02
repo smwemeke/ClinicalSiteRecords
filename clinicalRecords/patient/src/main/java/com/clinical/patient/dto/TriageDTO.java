@@ -2,7 +2,7 @@ package com.clinical.patient.dto;
 
 public record TriageDTO(
         String pressure,
-        float temp,
+        Float temp,
         Integer pulseRate,
         Integer respirationRate
 

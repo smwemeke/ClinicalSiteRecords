@@ -74,15 +74,16 @@ public class PatientServiceImpl implements PatientService {
       }
     }
     @Override
-    public Optional<TriageDTO> registerTriage(TriageDTO triageRequest) {
+    public PatientDTO updatePatientTriage(PatientDTO patientDTO, Long patientId) {
+     Patient foundPatient = patientRepository.findById(patientId)
+             .orElseThrow(() -> new PatientNotFoundException("Patient with patientId: " + patientId + "not found"));
 
-        // create Triage
-        Triage triage = triageMapper.toTriage(triageRequest);
+     Triage triage = foundPatient.getTriage();
+         triage.setPressure(patientDTO.triageDTO().pressure());
+         triage.setTemp(patientDTO.triageDTO().temp());
+         triage.setPulseRate(patientDTO.triageDTO().pulseRate());
+         triage.setRespirationRate(patientDTO.triageDTO().respirationRate());
 
-        // save triage
-        Triage savedTriage = triageRepository.save(triage);
-
-        TriageDTO triageDTO = triageMapper.toTriageDTO(savedTriage);
-        return Optional.of(triageDTO);
+        return  patientMapper.toPatientDTO(foundPatient);
     }
 }
