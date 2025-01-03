@@ -2,7 +2,6 @@ package com.clinical.patient.service;
 
 import com.clinical.patient.dto.PatientDTO;
 
-
 import java.util.List;
 import java.util.Optional;
 
